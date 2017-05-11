@@ -1,7 +1,9 @@
 /**
  * jquery.meio.mask.js
  * @author: fabiomcosta
- * @version: 1.1.14
+ *
+ * @contributor: vocjunior
+ * @version: 1.1.15
  *
  * Created by Fabio M. Costa on 2008-09-16. Please report any bug at http://www.meiocodigo.com
  *
@@ -43,11 +45,12 @@
             return match[2] || '0';
         };
 
+        var isIE11 = function () { return ((navigator.appName == 'Microsoft Internet Explorer') || ((navigator.appName == 'Netscape') && (new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})").exec(navigator.userAgent) != null))); };
         $.browser = {
             mozilla: /mozilla/.test(navigator.userAgent.toLowerCase()) && !/webkit/.test(navigator.userAgent.toLowerCase()),
             webkit: /webkit/.test(navigator.userAgent.toLowerCase()),
             opera: /opera/.test(navigator.userAgent.toLowerCase()),
-            msie: /msie/.test(navigator.userAgent.toLowerCase()),
+            msie: /msie/.test(navigator.userAgent.toLowerCase()) || isIE11(),
             android: (navigator.userAgent.toLowerCase().indexOf('mozilla/5.0') > -1 && navigator.userAgent.toLowerCase().indexOf('android ') > -1 && navigator.userAgent.toLowerCase().indexOf('applewebkit') > -1),
             version: uaMatch(navigator.userAgent)
         };
@@ -153,7 +156,7 @@
             // <input type="text" name="some_name" id="some_name" alt="msk" />
             masks: {
                 'phone': {
-                    mask: '(99) 9999-9999'
+                    mask: '(99) 9999-99999'
                 },
                 'phone-us': {
                     mask: '(999) 999-9999'
@@ -734,7 +737,7 @@
 
             // adaptation from http://digitarald.de/project/autocompleter/
             __getRange: function(input) {
-                if (!$.browser.msie || $.browser.android) return {
+                if (typeof input.selectionStart === "number" && typeof input.selectionEnd === "number") return {
                     start: input.selectionStart,
                     end: input.selectionEnd
                 };

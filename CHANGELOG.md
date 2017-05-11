@@ -1,3 +1,6 @@
+## v1.1.15
+* Fix android error
+
 ## v1.1.14
 * Organizing versions and adding to cdnjs
 

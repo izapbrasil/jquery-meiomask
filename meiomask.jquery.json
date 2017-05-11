@@ -7,7 +7,7 @@
         "mask",
         "input"
     ],
-    "version": "1.1.14",
+    "version": "1.1.15",
     "author": {
         "name": "Fabio M. Costa",
         "url": "https://github.com/fabiomcosta"
@@ -16,6 +16,12 @@
         {
             "name": "John Voloski",
             "url": "https://github.com/johnvoloski"
+        }
+    ],
+    "contributors": [
+        {
+            "name": "Valdeci Jr",
+            "url": "https://github.com/vocjunior"
         }
     ],
     "licenses": [
